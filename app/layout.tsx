@@ -9,9 +9,9 @@ import { CartProvider } from "@/contexts/CartContext"
 import type React from "react"
 
 const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -25,13 +25,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className={`font-poppins min-h-screen bg-background`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="/_next/static/css/app/globals.css" />
+      </head>
+      <body className={`${poppins.className} min-h-screen bg-background`}>
         <AuthProvider>
           <CartProvider>
-            <Header />
-            <main className="container mx-auto px-4 py-8">{children}</main>
-            <Footer />
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">
+                <div className="container mx-auto px-4 py-8">{children}</div>
+              </main>
+              <Footer />
+            </div>
             <Toaster />
           </CartProvider>
         </AuthProvider>
@@ -39,4 +46,5 @@ export default function RootLayout({
     </html>
   )
 }
+
 
