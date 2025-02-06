@@ -6,7 +6,7 @@ import Footer from "@/components/Footer"
 import { Toaster } from "@/components/ui/toaster"
 import { AuthProvider } from "@/contexts/AuthContext"
 import { CartProvider } from "@/contexts/CartContext"
-import type React from "react" // Import React
+import type React from "react"
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body className="font-poppins">
+      <body className={`font-poppins min-h-screen bg-background`}>
         <AuthProvider>
           <CartProvider>
             <Header />
