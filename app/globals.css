@@ -58,3 +58,13 @@
   }
 }
 
+/* Add some base styles to ensure CSS is loading */
+.bg-primary {
+  background-color: #0476d0;
+}
+
+.text-primary-foreground {
+  color: white;
+}
+
+
